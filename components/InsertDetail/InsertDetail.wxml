@@ -1,0 +1,49 @@
+<view class="popupbox">
+    <view class="title">虫子信息</view>
+    <van-divider/>
+
+    <view class="category">
+        <text>选择虫子种类</text><text class="must">必填</text>
+        <view class="classify">
+            <!-- todo:点击按钮后，只修改该按钮的样式,其他按钮样式不变 -->
+            <button class="{{itemclass}}" bindtap="selectinsert" data-value="蟑螂" hover-class="buttonhover">蟑螂</button>
+            <button class="{{itemclass}}" bindtap="selectinsert" data-value="蜘蛛">蜘蛛</button>
+            <button class="{{itemclass}}" bindtap="selectinsert" data-value="老鼠">老鼠</button>
+        </view>
+    </view>
+
+    <view class="number">
+        <text style="padding-top: 25rpx;">虫子数量</text>
+        <view class="stepper">
+            <van-stepper value="{{1}}" button-size="44px" input-width="44px"/>
+        </view>
+    </view>
+
+    
+    <view class="size">
+        <text>虫子大小</text>
+        <view class="extent">
+            <button class="{{itemclass}}" bindtap="selectsize" data-value="大">大</button>
+            <button class="{{itemclass}}" bindtap="selectsize" data-value="中等">中等</button>
+            <button class="{{itemclass}}" bindtap="selectsize" data-value="小">小</button>
+        </view>
+        
+    </view>
+
+    <view class="photo">
+        <text style="display: block; margin-bottom: 30rpx;">虫子照片</text>
+        <van-uploader file-list="{{fileList}}" bind:after-read="afterRead"/>
+        
+    </view>
+    <!-- 
+        bug:
+        1.上传图片后点击x无法删除图片
+        2.multiple开启图片多选后，点击图片预览会报错，且无法显示预览照片
+     -->
+    
+
+    <!-- todo:点击保存后，将数据（虫子种类、大小）传出去 -->
+    <view class="save">
+        <button class="savebutton" type="primary">保存</button>
+    </view>
+</view>

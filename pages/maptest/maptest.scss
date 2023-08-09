@@ -1,0 +1,45 @@
+#maptest
+{
+    width: 100%;
+    height: 1000rpx;
+}
+
+.box
+{
+    width: 100%;
+    height: 300rpx;
+    background-color: red;
+    opacity: 0.5;
+    transform: translateY(-100rpx);
+}
+.address
+{
+   width: 100%;
+   padding: 30rpx;
+   .container
+   {
+       background-color: white;
+       border-radius: 50rpx;
+       input
+        {
+            padding: 30rpx;
+            border-radius: 50rpx;
+            display: inline-block;
+            padding-left: 50rpx;
+        }
+        .img
+        {
+            width: 50rpx;
+            height: 50rpx;
+            display: inline-block;
+            transform: translate(34rpx,-23rpx);
+            image
+            {
+                width: 100%;
+                height: 100%;
+            }
+        }
+   }
+   
+   
+}

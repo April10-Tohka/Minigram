@@ -1,0 +1,35 @@
+.header
+{
+    height: 120rpx;
+    display: flex;
+    justify-content: space-between;
+    // border-bottom: 1px solid var(--themeColor);
+    padding: 0 30rpx;
+    align-items: center;
+    .logo
+    {
+        height: 70rpx;
+        
+        .logopic
+        {
+            height: 100%;
+        }
+        .logotxt
+        {
+            display: inline-block;
+            transform: translateY(-28rpx);
+            color: var(--themeColor);
+        }
+    }
+}
+
+.headerbg
+{
+    width: 100%;
+    height: 200rpx;
+    image
+    {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,78 @@
+<!-- 首页顶部显示logo -->
+<!-- 看了像快递的小程序，顶部都没有展示自己的logo，可能会删掉 -->
+<index-header></index-header>
+
+
+<!-- 轮播图  一些新用户注册优惠活动入口,邀请好友领券和展示广告-->
+<view class="banner">
+    <swiper
+    indicator-dots="true" autoplay="true" interval="3000" previous-margin="30rpx"
+    circular="true" indicator-color="rgba(255,255,255,0.3)" duration="900" easing-function="linear">
+        <swiper-item wx:for="{{bannerPic}}" wx:key="index">
+            <image src="{{item}}" mode=""/>
+        </swiper-item>
+    </swiper>
+</view>
+
+
+<!-- 发布订单和拍照识别功能 -->
+<view class="mainfunction">
+    <view class="box">
+        <!-- 发布订单 -->
+        <navigator class="publish" url="../publish-order/publish-order">
+            <view class="pic">
+                <image src="../../icons/代客下单.png" mode=""/>
+            </view>
+            <view class="description">
+                <view class="headtitle">下单</view>
+                <view class="subtitle">1小时上门灭虫</view>
+            </view>
+        </navigator>
+        <!-- 拍照识别 -->
+        <navigator class="recognize" url="../publish-order/publish-order">
+            <view class="pic">
+                <image src="../../icons/相机.png" mode=""/>
+            </view>
+            <view class="description">
+                <view class="headtitle">拍照</view>
+                <view class="subtitle">识别虫子</view>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+
+<!-- 其他功能，比如联系客服 -->
+<scroll-view class="scrollview" scroll-x="true" enable-flex="true">
+    <navigator class="item" url="../publish-order/publish-order" wx:for="{{7}}" wx:key="index">
+        <view class="navpic">
+            <image src="../../images/teaBanner.jpg" mode=""/>
+        </view>
+        <view class="navtxt">
+            联系客服
+        </view>
+    </navigator>
+</scroll-view>
+
+
+
+<!-- 新闻咨询   放一些新闻在这里,可以点击阅读-->
+<view class="news">
+    <view class="title">
+        <view class="en">News</view>
+        <view class="cn">新闻咨询</view>
+        <view class="line"></view>
+    </view>
+    <view class="content">
+        <view wx:for="{{3}}" wx:key="index">
+            <news></news>
+        </view>
+    </view>
+    
+</view>
+
+<!-- 平台版权信息-->
+<view class="copyright">
+    <copyright></copyright>
+</view>
+

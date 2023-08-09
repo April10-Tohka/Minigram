@@ -1,0 +1,104 @@
+.popupbox
+{
+    padding: 30rpx 40rpx;
+    .title
+    {
+        font-size: 32rpx;
+        font-weight: 900;
+        padding-bottom: 20rpx;
+        
+    }
+    .category
+    {
+        .must
+        {
+            color: #c36972;//文字颜色应该要红色再多一点
+            font-size: 20rpx;
+            display: inline-block;
+            background-color: #fbefef;
+            padding: 10rpx;
+            margin-left: 5rpx;
+            border-radius: 10rpx;
+        }
+        .classify
+        {
+            padding-top: 30rpx;
+            display: flex;
+            justify-content: space-between;
+            /*
+            .insert
+            {
+                width: 190rpx;
+                height: 100rpx;
+                background-color: #e4e4e4;//吸取下顺丰的分类的颜色
+                border-radius: 20rpx;
+                text-align: center;
+                line-height: 100rpx;
+            }
+            */
+        }
+    }
+    .number
+    {
+        padding-top: 50rpx;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        .stepper
+        {
+            display: inline-block;
+        }
+        
+    }
+    .size
+    {
+        padding-top: 50rpx;
+        .extent
+        {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 30rpx;
+            /*
+            .item
+            {
+                width: 190rpx;
+                height: 100rpx;
+                background-color: #e4e4e4;
+                border-radius: 20rpx;
+                text-align: center;
+                line-height: 100rpx;
+            }
+            */
+        }
+    }
+    .photo
+    {
+        padding-top: 50rpx;
+    }
+    .save
+    {
+        padding-top: 50rpx;
+        .savebutton
+        {
+            width: 100%;
+            background-color: var(--themeColor);
+            border-radius:50rpx;
+        }
+    }
+}
+
+//虫子种类和虫子大小按钮的样式
+.item
+{
+    width: 190rpx;
+    height: 100rpx;
+    background-color: #e4e4e4;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+.item-active
+{
+    border-color: red;
+    
+}

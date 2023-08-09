@@ -1,0 +1,20 @@
+view,text
+{
+    box-sizing: border-box;
+}
+page
+{
+    --themeColor: #ffe100; /* 主题色 */
+    --globalColor: #1a1b1c;
+    --focusColor: #4c4d4e;
+    --descColor: #7e8081;
+    --greyColor:#8e8e8e;
+    --subColor: #b1b2b3;/*副标题颜色*/
+    --lightColor:#e4e4e4;
+    --globalBgColor1: #e3e4e5;
+    --globalBgColor2: #f6f7f8;
+    --globalBgColor3: #ffffff;
+    --linecolor:#e3e4e5;/*划线的颜色*/
+    --componentBgcolor:#ffffff;/* 组件的背景色 */
+    background-color: var(--globalBgColor1);
+}

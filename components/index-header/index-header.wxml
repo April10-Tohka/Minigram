@@ -1,0 +1,15 @@
+<!-- <view class="header">
+    <view class="logo" >
+        <image src="/images/logo.png" mode="heightFix" class="logopic"/>
+        <view class="logotxt">
+            杀虫联盟
+        </view>
+    </view>
+    <view class="search">
+        <icon type="search" size="26" color="#ffe100"/>
+    </view>
+</view> -->
+
+<view class="headerbg">
+    <image src="../../images/headerbg.png" mode=""/>
+</view>

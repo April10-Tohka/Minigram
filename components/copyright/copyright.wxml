@@ -1,0 +1,5 @@
+<view class="content">
+    <navigator url="../../pages/logs/logs" class="row">
+        平台资质、服务协议、规则及投诉入口>
+    </navigator>
+</view>

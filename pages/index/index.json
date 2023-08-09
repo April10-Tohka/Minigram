@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "index-header":"../../components/index-header/index-header",
+    "news":"../../components/news/news",
+    "copyright":"../../components/copyright/copyright"
+  },
+  "navigationBarTitleText": "欢迎使用杀虫联盟",
+  "navigationBarBackgroundColor": "#ffe100"
+}

@@ -1,0 +1,22 @@
+<navigator class="news-item" url="../../pages/logs/logs">
+    <view class="newpic">
+        <image src="../../images/xiangmubeijing.jpg" mode="" class="img"/>
+    </view>
+    <view class="content">
+        <view class="title">
+            标题阿山地哦啊接搜i几千万i哦啊哈地哦啊结束i哦千万人很大百年初心怎么扛不住计划开始发呆哦就打算不明真相百鸟朝凤快哦省公司i哦红色
+        </view>
+        <view class="information">
+            <view class="publish_date">
+                <van-icon name="underway-o" class="vanicon" /><text>11-27</text>
+            </view>
+            <view class="view_count">
+                <van-icon name="eye-o" class="vanicon" /><text>7456</text>
+            </view>
+            <view class="author">
+                <van-icon name="contact" class="vanicon" /><text>菲谢尔</text>
+            </view>
+        </view>
+    </view>
+</navigator>
+

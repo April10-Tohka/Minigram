@@ -1,0 +1,21 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+.box
+{
+    
+    
+    height: 200rpx;
+    padding: 50rpx 30rpx;
+}
+.box1
+{
+    background-color: white;
+    padding: 0 10rpx;
+    border-radius: 50rpx;
+}
