@@ -15,7 +15,7 @@
     <view class="number">
         <text style="padding-top: 25rpx;">虫子数量</text>
         <view class="stepper">
-            <van-stepper value="{{1}}" button-size="44px" input-width="44px"/>
+            <van-stepper value="{{insertNum}}" button-size="44px" input-width="44px" bindchange="stepper"/>
         </view>
     </view>
 
@@ -41,9 +41,7 @@
         2.multiple开启图片多选后，点击图片预览会报错，且无法显示预览照片
      -->
     
-
-    <!-- todo:点击保存后，将数据（虫子种类、大小）传出去 -->
     <view class="save">
-        <button class="savebutton" type="primary">保存</button>
+        <button class="savebutton" type="primary" bindtap="savebutton">保存</button>
     </view>
 </view>
