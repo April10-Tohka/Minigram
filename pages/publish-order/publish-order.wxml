@@ -25,65 +25,18 @@
         <view class="box">
 
             <!-- 填写病虫信息 -->
-            <view class="insertinformation" bindtap="onclick">
+            <view class="insertinformation" bindtap="onclick" data-menu="insertinformation">
                 <text class="title">虫子信息</text><text class="must">必填</text>
                 <text class="showdetail">{{showdetail}}</text>
             </view>
+
             <!-- 优惠券 -->
-            <view class="coupon" bindtap="onclick">
+            <view class="coupon" bindtap="onclick" data-menu="coupon">
                 <text class="title">优惠券</text>
-            </view>
-            
-            <!-- 填写病虫信息的弹窗 -->
-            <van-popup show="{{showpopup}}" bind:close="onClose" position="bottom"
-            closeable="true" custom-style="height:65%" round="true" >
-                <!--
-                <view class="popupbox">
-                    <view class="title">虫子信息</view>
-                    <van-divider/>
-
-                    <view class="category">
-                        <text>选择虫子种类</text><text class="must">必填</text>
-                        <view class="classify">
-                            <view class="insert">蟑螂</view>
-                            <view class="insert">蜘蛛</view>
-                            <view class="insert">老鼠</view>
-                        </view>
-                    </view>
-
-                    <view class="number">
-                        <text style="padding-top: 25rpx;">虫子数量</text>
-                        <view class="stepper">
-                            <van-stepper value="{{ 1 }}" button-size="44px" input-width="44px"/>
-                        </view>
-                    </view>
-
-                    
-                    <view class="size">
-                        <text>虫子大小</text>
-                        <view class="extent">
-                            <view class="item">大</view>
-                            <view class="item">中等</view>
-                            <view class="item">小</view>
-                        </view>
-                        
-                    </view>
-
-                    <view class="photo">
-                        <text style="display: block; margin-bottom: 30rpx;">虫子照片</text>
-                        <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-                    </view>
-                    
-                    <view class="save">
-                        <button class="savebutton" type="primary">保存</button>
-                    </view>
-                </view>
-                -->
-                <InsertDetail></InsertDetail>
-            </van-popup>
-            <!-- 优惠券的弹窗还未做 -->
+            </view> 
         </view>
     </view>
+    
 
     <!-- 显示费用，立即下单 -->
     <view class="footer">
@@ -103,6 +56,65 @@
             </view>
         </view>
     </view>
+
+    <!-- 弹窗 -->
+    <van-popup show="{{showpopup}}" bind:close="onClose" position="bottom"
+    closeable="true" custom-style="height:65%" round="true" >
+        <!--
+        <view class="popupbox">
+            <view class="title">虫子信息</view>
+            <van-divider/>
+
+            <view class="category">
+                <text>选择虫子种类</text><text class="must">必填</text>
+                <view class="classify">
+                    <view class="insert">蟑螂</view>
+                    <view class="insert">蜘蛛</view>
+                    <view class="insert">老鼠</view>
+                </view>
+            </view>
+
+            <view class="number">
+                <text style="padding-top: 25rpx;">虫子数量</text>
+                <view class="stepper">
+                    <van-stepper value="{{ 1 }}" button-size="44px" input-width="44px"/>
+                </view>
+            </view>
+
+            
+            <view class="size">
+                <text>虫子大小</text>
+                <view class="extent">
+                    <view class="item">大</view>
+                    <view class="item">中等</view>
+                    <view class="item">小</view>
+                </view>
+                
+            </view>
+
+            <view class="photo">
+                <text style="display: block; margin-bottom: 30rpx;">虫子照片</text>
+                <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+            </view>
+            
+            <view class="save">
+                <button class="savebutton" type="primary">保存</button>
+            </view>
+        </view>
+        -->
+        <!-- 填写病虫信息的弹窗 -->
+        <block wx:if="{{PopupInsertInformation}}">
+             <InsertDetail bindclosePopup="onClose" bindsave="updateInsertMsg">
+            </InsertDetail>
+        </block>
+        <!-- 选择优惠券的弹窗 -->
+        <block wx:if="{{PopupCoupon}}">
+            <coupon></coupon>
+        </block>
+       
+
+    </van-popup>
+    
 </form>
 
     

@@ -45,7 +45,7 @@
         }
     }
 
-    //下单页面的information
+    //下单页面的information区域
     .information
     {
         padding: 30rpx;
@@ -83,7 +83,7 @@
         }
     }
 
-    // 下单页面的detail
+    // 下单页面的detail区域
     .detail
     {
         padding: 30rpx;
@@ -108,12 +108,21 @@
                     display: inline-block;
                     background-color: #fbefef;
                     padding: 10rpx;
+                    border-radius: 20rpx;
                 }
                 .title
                 {
                     color: #8e8e8e; ;
                 }
+                .showdetail
+                {
+                    text-align: right;
+                    display: inline-block;
+                    position: absolute;
+                    right: 25rpx;
+                }
             }
+            
             .insertinformation::after,.coupon::after
             {
                 content:">" ;//应该弄个向下的箭头

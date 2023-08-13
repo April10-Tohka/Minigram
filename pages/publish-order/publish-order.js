@@ -1,4 +1,5 @@
 Page({
+    
 
     /**
      * 页面的初始数据
@@ -8,10 +9,11 @@ Page({
        address:"广东省珠海市斗门区斗门一中",
        phonenumber:13727851384,
        showpopup:false,
-       showdetail:"显示虫子的信息"
+       showdetail:"",
+       PopupInsertInformation:false,
+       PopupCoupon:false
        
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -68,19 +70,39 @@ Page({
     onShareAppMessage() {
 
     },
+    // 点击阅读并同意按钮
     onChange(event)
     {
-        console.log(event);
+        console.log("点击了我已阅读按钮！",event);
         this.setData({checked:event.detail})
     },
-    onclick()
+    // 点击信息填写栏，跳出对应的弹窗
+    onclick(event)
     {
-        console.log("点击了，触发onclick！");
+        console.log("点击了，触发onclick！跳出弹窗",event.currentTarget.dataset.menu);
         this.setData({showpopup:true})
+        if(event.currentTarget.dataset.menu=="insertinformation")
+        {
+            this.setData({PopupInsertInformation:true})
+        }
+        else if(event.currentTarget.dataset.menu=="coupon")
+        {
+            this.setData({PopupCoupon:true})
+        }
+        
     },
+    // 关闭弹窗
     onClose()
     {
         console.log("关闭了弹出层！");
-        this.setData({showpopup:false})
+        this.setData({showpopup:false,PopupCoupon:false,PopupInsertInformation:false})
+        
+    },
+    // 弹窗内点击了保存后，收到传来的参数并更新数据，并展示到页面
+    updateInsertMsg(passobj)
+    {
+        this.setData({
+            showdetail:passobj.detail.insert+","+passobj.detail.size+","+passobj.detail.num+"只"
+        })
     }
 })
