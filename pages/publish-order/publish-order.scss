@@ -125,11 +125,13 @@
             
             .insertinformation::after,.coupon::after
             {
-                content:">" ;//应该弄个向下的箭头
+                content:"∨" ;
                 display: inline-block;
                 position: absolute;
                 right: -10rpx;
+                font-size: 40rpx;
             }
+            // 点击任意填写栏之后，∨如何变成^符号？
         }
     }
 }

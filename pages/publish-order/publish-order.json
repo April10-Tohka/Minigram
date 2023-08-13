@@ -6,5 +6,7 @@
         "InsertDetail":"../../components/InsertDetail/InsertDetail",
         "coupon":"../../components/coupon/coupon"
         
-    }
+    },
+    "navigationBarTitleText": "下单"
+
 }
