@@ -25,17 +25,6 @@
             padding-top: 30rpx;
             display: flex;
             justify-content: space-between;
-            /*
-            .insert
-            {
-                width: 190rpx;
-                height: 100rpx;
-                background-color: #f5f5f5;//吸取下顺丰的分类的颜色
-                border-radius: 20rpx;
-                text-align: center;
-                line-height: 100rpx;
-            }
-            */
         }
     }
     .number
@@ -48,7 +37,6 @@
         {
             display: inline-block;
         }
-        
     }
     .size
     {
@@ -58,17 +46,6 @@
             display: flex;
             justify-content: space-between;
             padding-top: 30rpx;
-            /*
-            .item
-            {
-                width: 190rpx;
-                height: 100rpx;
-                background-color: #f5f5f5;
-                border-radius: 20rpx;
-                text-align: center;
-                line-height: 100rpx;
-            }
-            */
         }
     }
     .photo
@@ -96,5 +73,10 @@
     border-radius: 20rpx;
     text-align: center;
     line-height: 100rpx;
+}
+// 按钮选中时样式
+.choosen
+{
+    border: 1px solid red;
 }
 

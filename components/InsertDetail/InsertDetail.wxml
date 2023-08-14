@@ -5,10 +5,10 @@
     <view class="category">
         <text>选择虫子种类</text><text class="must">必填</text>
         <view class="classify">
-            <!-- todo:点击按钮后，只修改该按钮的样式,其他按钮样式不变 -->
-            <button class="{{itemclass}}" bindtap="selectinsert" data-value="蟑螂" >蟑螂</button>
-            <button class="{{itemclass}}" bindtap="selectinsert" data-value="蜘蛛">蜘蛛</button>
-            <button class="{{itemclass}}" bindtap="selectinsert" data-value="老鼠">老鼠</button>
+            <button wx:for="{{insertList}}" wx:key="_id" data-value="{{item.name}}"
+            bindtap="selectinsert" class="item {{item.ischoose?'choosen':''}}">
+                {{item.name}}
+            </button>
         </view>
     </view>
 
@@ -23,9 +23,9 @@
     <view class="size">
         <text>虫子大小</text>
         <view class="extent">
-            <button class="{{itemclass}}" bindtap="selectsize" data-value="大">大</button>
-            <button class="{{itemclass}}" bindtap="selectsize" data-value="中等">中等</button>
-            <button class="{{itemclass}}" bindtap="selectsize" data-value="小">小</button>
+            <button wx:for="{{sizeList}}" wx:key="_id" bindtap="selectsize" data-value="{{item.name}}" class="item {{item.ischoose?'choosen':''}}">
+                {{item.name}}
+            </button>
         </view>
         
     </view>
