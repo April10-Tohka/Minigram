@@ -34,14 +34,9 @@
         <text style="display: block; margin-bottom: 30rpx;">虫子照片</text>
         <van-uploader file-list="{{fileList}}" bind:after-read="afterRead" 
         binddelete="deletePic"/>
-        
+        <!-- 实现不了图片多选上传 -->
     </view>
-    <!-- 
-        bug:
-        1.上传图片后点击x无法删除图片
-        2.multiple开启图片多选后，点击图片预览会报错，且无法显示预览照片
-     -->
-    
+
     <view class="save">
         <button class="savebutton" type="primary" bindtap="savebutton">保存</button>
     </view>
