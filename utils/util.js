@@ -13,7 +13,11 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
 }
+// 格式化虫子信息
+const formatInformation=(passdata)=>{
+    return passdata.insert+" "+passdata.size+" "+passdata.num+"只";
+}
 
 module.exports = {
-  formatTime
+  formatInformation
 }
