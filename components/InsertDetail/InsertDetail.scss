@@ -10,16 +10,6 @@
     }
     .category
     {
-        .must
-        {
-            color: #c36972;//文字颜色应该要红色再多一点
-            font-size: 20rpx;
-            display: inline-block;
-            background-color: #fbefef;
-            padding: 10rpx;
-            margin-left: 5rpx;
-            border-radius: 20rpx;
-        }
         .classify
         {
             padding-top: 30rpx;
@@ -58,10 +48,24 @@
         .savebutton
         {
             width: 100%;
-            background-color: var(--themeColor);
+            background-image: linear-gradient(to right,#e60012,red);
             border-radius:50rpx;
         }
     }
+    .category,.photo
+    {
+        .label
+        {
+            color: #c36972;//文字颜色应该要红色再多一点
+            font-size: 20rpx;
+            display: inline-block;
+            background-color: #fbefef;
+            padding: 10rpx;
+            margin-left: 5rpx;
+            border-radius: 20rpx;
+        }
+    }
+
 }
 
 //虫子种类和虫子大小按钮的样式
@@ -77,6 +81,8 @@
 // 按钮选中时样式
 .choosen
 {
-    border: 1px solid red;
+    border: 1px solid #e60012;
+    background-color: #fef3f3;
+    color: #e60012;
 }
 

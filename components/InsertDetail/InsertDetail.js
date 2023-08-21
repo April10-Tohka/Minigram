@@ -72,11 +72,23 @@ Component({
         // 点击保存按钮，实现组件间通信
         savebutton()
         {
+            // 点击保存前，先校验是否选择了虫子种类 没有弹出提示窗
+            if(!this.data.insert)
+            {
+                wx.showToast({
+                  title: '请选择虫子种类',
+                  icon:"success",
+                  image:"../../icons/提示说明.png"
+                })
+                return;
+            }
+            // 有执行下面操作
             // 传出去的数据
             let passobj={
                 insert:this.data.insert,
                 size:this.data.size,
-                num:this.data.insertNum
+                num:this.data.insertNum,
+                insertInformationComplete:true// 确认已填好虫子信息，传递给publish-order
             }
             // 本地缓存所选择的数据 
             // 实现下一次点开弹窗显示上一次所选情况  
