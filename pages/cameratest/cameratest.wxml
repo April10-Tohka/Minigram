@@ -1,5 +1,0 @@
-<view class="{{box}}">
-    测试1
-</view>
-<button bindtap="changeclass">点击将类名box改为box1</button>
-<test1 bindmyevent="youevent"></test1>
