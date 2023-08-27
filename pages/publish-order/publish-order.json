@@ -1,10 +1,11 @@
 {
     "usingComponents": {
         "van-checkbox": "@vant/weapp/checkbox/index",
-        "van-checkbox-group": "@vant/weapp/checkbox-group/index",
         "van-popup": "@vant/weapp/popup/index",
         "InsertDetail":"../../components/InsertDetail/InsertDetail",
-        "coupon":"../../components/coupon/coupon"
+        "coupon":"../../components/coupon/coupon",
+        "clause":"../../components/clause/clause",
+        "Notification":"../../components/Notification/Notification"
         
     },
     "navigationBarTitleText": "下单"

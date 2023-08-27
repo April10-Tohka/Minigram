@@ -1,3 +1,6 @@
+<Notification wx:if="{{warntip}}">
+    <text slot>{{warntipTxt}}</text>
+</Notification>
 <form bindsubmit="" class="container">
 <!-- 填写个人信息 -->
     <view class="information">
@@ -7,7 +10,7 @@
                     <image src="../../icons/坐标.png" mode=""/>
                 </view>
                 <view class="ipt">
-                    <input type="text" placeholder="请输入灭虫地点!" model:value="{{address}}" placeholder-class="placeholder"/>
+                    <input type="text" placeholder="请输入灭虫地点!" model:value="{{address}}" placeholder-class="placeholder" bindinput="iptnothing"/>
                 </view>
             </view>
             <view class="phone">
@@ -15,9 +18,11 @@
                     <image src="../../icons/手机号码.png" mode=""/>
                 </view>
                 <view class="ipt">
-                    <input type="text" placeholder="请输入手机号码!" model:value="{{phonenumber}}" maxlength="11" placeholder-class="placeholder"/>
+                    <input type="number" placeholder="请输入手机号码!" model:value="{{phonenumber}}" maxlength="11" placeholder-class="placeholder"
+                    bindinput="iptnothing" bindblur="phoneblur" bindfocus="phonefocus"/>
                 </view>
             </view>
+            
         </view>
     </view>
     <!-- 病虫信息 -->
@@ -25,14 +30,16 @@
         <view class="box">
 
             <!-- 填写病虫信息 -->
-            <view class="insertinformation" bindtap="onclick" data-menu="insertinformation">
+            <view class="insertinformation" bindtap="clickPopup" data-menu="insertinformation">
                 <text class="title">虫子信息</text><text class="must">必填</text>
                 <text class="showdetail">{{showdetail}}</text>
+                <text class="arrowdown {{clickInsertInformation?'up':''}}"></text>
             </view>
 
             <!-- 优惠券 -->
-            <view class="coupon" bindtap="onclick" data-menu="coupon">
+            <view class="coupon" bindtap="clickPopup" data-menu="coupon">
                 <text class="title">优惠券</text>
+                <text class="arrowdown {{clickCoupon?'up':''}}"></text>
             </view> 
         </view>
     </view>
@@ -41,16 +48,19 @@
     <!-- 显示费用，立即下单 -->
     <view class="footer">
         <view class="agree">
-            <van-checkbox value="{{ checked }}" bind:change="onChange" checked-color="#ffe100">
-                我已阅读并同意条款
+            <van-checkbox value="{{AgreeClause}}" bind:change="onChange" checked-color="#e60012">
+                我已阅读并同意
+                <text style="color: black; font-weight: 900;" catchtap="clickPopup" data-menu="clause">《条款》</text>
             </van-checkbox>
         </view>
         <view class="display">
             <view class="price">
-                预估费用 <text style="color: red; font-size: 24rpx;">￥</text><text class="pricetxt">10</text>
+                预估费用 <text style="color: red; font-size: 24rpx;">￥</text>
+                <text class="pricetxt">{{price}}</text>
             </view>
             <view class="order">
-                <button form-type="submit" class="submit" type="primary" size="default">
+                <button form-type="submit" class="submit" type="primary" 
+                disabled="{{canOrder}}" size="default" bindtap="submitbutton">
                     立即下单
                 </button>
             </view>
@@ -58,60 +68,21 @@
     </view>
 
     <!-- 弹窗 -->
-    <van-popup show="{{showpopup}}" bind:close="onClose" position="bottom"
-    closeable="true" custom-style="height:65%" round="true" >
-        <!--
-        <view class="popupbox">
-            <view class="title">虫子信息</view>
-            <van-divider/>
-
-            <view class="category">
-                <text>选择虫子种类</text><text class="must">必填</text>
-                <view class="classify">
-                    <view class="insert">蟑螂</view>
-                    <view class="insert">蜘蛛</view>
-                    <view class="insert">老鼠</view>
-                </view>
-            </view>
-
-            <view class="number">
-                <text style="padding-top: 25rpx;">虫子数量</text>
-                <view class="stepper">
-                    <van-stepper value="{{ 1 }}" button-size="44px" input-width="44px"/>
-                </view>
-            </view>
-
-            
-            <view class="size">
-                <text>虫子大小</text>
-                <view class="extent">
-                    <view class="item">大</view>
-                    <view class="item">中等</view>
-                    <view class="item">小</view>
-                </view>
-                
-            </view>
-
-            <view class="photo">
-                <text style="display: block; margin-bottom: 30rpx;">虫子照片</text>
-                <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-            </view>
-            
-            <view class="save">
-                <button class="savebutton" type="primary">保存</button>
-            </view>
-        </view>
-        -->
+    <van-popup show="{{showpopup}}" bind:close="closePopup" position="bottom"
+    closeable="true" custom-style="height:74%" round="true" >
         <!-- 填写病虫信息的弹窗 -->
-        <block wx:if="{{PopupInsertInformation}}">
-             <InsertDetail bindclosePopup="onClose" bindsave="updateInsertMsg">
+        <block wx:if="{{PopupInsertInformation}}" >
+             <InsertDetail bindclosePopup="closePopup" bindsave="updateInsertMsg" >
             </InsertDetail>
         </block>
         <!-- 选择优惠券的弹窗 -->
-        <block wx:if="{{PopupCoupon}}">
+        <block wx:if="{{PopupCoupon}}" >
             <coupon></coupon>
         </block>
-       
+        <!-- 条款协议弹窗 -->
+        <block wx:if="{{PopupClause}}">
+            <clause></clause>
+        </block>
 
     </van-popup>
     
