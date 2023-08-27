@@ -1,0 +1,6 @@
+<view class="box">
+    <view class="content">
+        <icon type="warn" color="white" class="icon" size="28rpx"/>
+        <slot></slot>
+    </view>
+</view>
