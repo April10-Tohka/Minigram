@@ -3,3 +3,9 @@ node_modules/
 package-lock.json
 package.json
 sitemap.json
+app.json
+app.js
+app.wxss
+project.config.json
+project.private.config.json
+.eslintrc.js
