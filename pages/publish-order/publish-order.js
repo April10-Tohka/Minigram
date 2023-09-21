@@ -1,24 +1,27 @@
-import {formatInformation,debounce,VerifyPhone} from "../../utils/util"
+import {formatInformation,VerifyPhone} from "../../utils/util"
+import {options} from "./addressOptions"
 Page({
     data: {
        AgreeClause:true,//是否点击我已阅读
-       address:"广东省珠海市斗门区斗门一中",//地址
        phonenumber:"",//电话
        showpopup:false,//是否显示弹窗
        showdetail:"",//展示虫子信息内容
        PopupInsertInformation:false,//是否弹出填写虫子信息弹窗
        PopupCoupon:false,//是否弹出优惠券的弹窗
        PopupClause:false,//是否弹出条款协议的弹窗
-       InsertInformationComplete:false,
+       PopupAddress:false,//是否弹出选择地址的弹窗
+       InsertInformationComplete:false,//是否完成填写虫子信息
        passdata:{},//弹窗传来的数据,
        clickInsertInformation:false,//是否点击了点击了虫子信息填写栏 （实现箭头翻转效果)
        clickCoupon:false,//是否点击了点击了优惠券栏 （实现箭头翻转效果)
        warntipTxt:"",//警告提示内容
        warntip:false,//是否显示警告
        price:18,//费用
-
-
        canOrder:false,//是否可以点击下单按钮
+
+       fieldValue: '',//地址
+       options:options,//地址配置
+       cascaderValue: '',//宿舍号码
        
     },
     
@@ -78,6 +81,21 @@ Page({
     onShareAppMessage() {
 
     },
+    // 地址选择完毕后
+    onfinish(event)
+    {
+        console.log("全部选完才会调用",event);
+        const { selectedOptions, value } = event.detail;
+        const fieldValue = selectedOptions
+            .map((option) => option.text || option.name)
+            .join('/');
+        this.setData({
+        fieldValue,cascaderValue: value,
+        warntip:false//如果有警告提醒，则关闭警告
+        })
+        // 全部选择完毕后，关闭弹窗
+        this.closePopup();
+    },
     // 点击阅读并同意按钮
     onChange(event)
     {
@@ -100,6 +118,10 @@ Page({
         {
             this.setData({showpopup:true,PopupClause:true})
         }
+        else if(event.currentTarget.dataset.menu=="address")
+        {
+            this.setData({showpopup:true,PopupAddress:true})
+        }
         
     },
     // 关闭弹窗
@@ -107,7 +129,8 @@ Page({
     {
         console.log("关闭了弹出层！");
         this.setData({
-            showpopup:false,PopupCoupon:false,PopupInsertInformation:false,PopupClause:false,clickInsertInformation:false,clickCoupon:false
+            showpopup:false,PopupCoupon:false,PopupInsertInformation:false,PopupClause:false,clickInsertInformation:false,clickCoupon:false,
+            PopupAddress:false
         })
     },
     // 弹窗内点击了保存后，调用该函数,收到传来的参数并更新数据，并展示到页面
@@ -120,6 +143,7 @@ Page({
             InsertInformationComplete:passobj.detail.insertInformationComplete
         })
     },
+    //输入内容什么都不做
     iptnothing(event)
     {
         return
@@ -135,7 +159,14 @@ Page({
     {
         // 失去焦点时验证手机号码
         let phone=event.detail.value;
-        //校验是否合法
+        //校验是否为空
+        if(phone==="")
+        {
+            console.log("电话不能为空");
+            this.setData({warntipTxt:"手机号码不能为空",warntip:true})
+            return;
+        }
+        //再校验是否合法
         if(!VerifyPhone(phone))
         {
             this.setData({warntipTxt:"手机号码有误",warntip:true})
@@ -146,8 +177,20 @@ Page({
     submitbutton(event)
     {
         console.log("点击了立即下单按钮",event);
-        // 如果没有填写个人信息，弹出弹窗让用户填写，并提示
-
+        // 如果没有填写地址，弹出弹窗让用户填写，并提示
+        if(this.data.fieldValue==="")
+        {
+            console.log("地址不能为空");
+            this.setData({warntip:true,warntipTxt:"请选择地址",PopupAddress:true,showpopup:true});
+            return;
+        }
+        // 没有输入电话的话，警告，提醒用户输入电话
+        if(this.data.phonenumber==="")
+        {
+            console.log("电话号码不能为空");
+            this.setData({warntip:true,warntipTxt:"手机号码不能为空"});
+            return;
+        }
         // 如果没有填写虫子信息，弹出弹窗让用户填写,并提示
         if(!this.data.InsertInformationComplete)
         {
@@ -168,6 +211,10 @@ Page({
             })
             return;
         }
+
+        //1.发送给服务器的数据
+        //2.动态计算价格
+
         console.log("所有资料填写完毕！之后会将信息发送到服务器");
         
     },

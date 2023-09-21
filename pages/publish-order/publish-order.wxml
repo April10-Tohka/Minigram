@@ -1,25 +1,28 @@
+<!-- 顶部警告提醒 -->
 <Notification wx:if="{{warntip}}">
     <text slot>{{warntipTxt}}</text>
 </Notification>
 <form bindsubmit="" class="container">
-<!-- 填写个人信息 -->
+    <!-- 填写个人信息 -->
     <view class="information">
         <view class="box">
-            <view class="address">
+            <view class="address" bindtap="clickPopup" data-menu="address" >
                 <view class="icon">
                     <image src="../../icons/坐标.png" mode=""/>
                 </view>
                 <view class="ipt">
-                    <input type="text" placeholder="请输入灭虫地点!" model:value="{{address}}" placeholder-class="placeholder" bindinput="iptnothing"/>
+                    <input type="text" placeholder="请输入灭虫地点!" 
+                    value="{{fieldValue}}"  disabled="true"/>
                 </view>
+                <!-- 不需要箭头就删除了 -->
+                <text class="arrowdown"></text>
             </view>
             <view class="phone">
                 <view class="icon">
                     <image src="../../icons/手机号码.png" mode=""/>
                 </view>
                 <view class="ipt">
-                    <input type="number" placeholder="请输入手机号码!" model:value="{{phonenumber}}" maxlength="11" placeholder-class="placeholder"
-                    bindinput="iptnothing" bindblur="phoneblur" bindfocus="phonefocus"/>
+                    <input type="number" placeholder="请输入手机号码!" model:value="{{phonenumber}}" maxlength="11"bindinput="iptnothing" bindblur="phoneblur" bindfocus="phonefocus"/>
                 </view>
             </view>
             
@@ -70,9 +73,16 @@
     <!-- 弹窗 -->
     <van-popup show="{{showpopup}}" bind:close="closePopup" position="bottom"
     closeable="true" custom-style="height:74%" round="true" >
+        <!-- 选择地址的弹窗 -->
+        <block wx:if="{{PopupAddress}}">
+            <van-cascader closeable="{{false}}" options="{{options}}" 
+            title="请选择" bind:finish="onfinish" active-color="#ee0a24"
+            value="{{ cascaderValue }}"
+            ></van-cascader>
+        </block>
         <!-- 填写病虫信息的弹窗 -->
         <block wx:if="{{PopupInsertInformation}}" >
-             <InsertDetail bindclosePopup="closePopup" bindsave="updateInsertMsg" >
+            <InsertDetail bindclosePopup="closePopup" bindsave="updateInsertMsg" >
             </InsertDetail>
         </block>
         <!-- 选择优惠券的弹窗 -->

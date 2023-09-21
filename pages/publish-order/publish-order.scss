@@ -54,6 +54,7 @@
             padding: 40rpx 30rpx;
             .address,.phone
             {
+                position: relative;
                 display: flex;
                 padding: 30rpx 10rpx;
                 .icon
@@ -70,6 +71,19 @@
                 {
                     padding-left: 15rpx;
                     width: 600rpx;
+                }
+                // 看看地址需不需要箭头,不需要就删除了
+                .arrowdown
+                {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    top: 48rpx;
+                    height: 0;
+                    border-width: 13rpx;     /*控制箭头的大小 */
+                    border-style: solid;
+                    border-color:#8e8e8e transparent transparent transparent;
+                    transition: 0.4s;
                 }
             }
             .address
