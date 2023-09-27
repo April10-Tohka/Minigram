@@ -20,7 +20,7 @@
     </view>
 
     
-    <view class="size">
+    <!-- <view class="size">
         <text>虫子大小</text>
         <view class="extent">
             <button wx:for="{{sizeList}}" wx:key="_id" bindtap="selectsize" data-value="{{item.name}}" class="item {{item.ischoose?'choosen':''}}">
@@ -28,7 +28,7 @@
             </button>
         </view>
         
-    </view>
+    </view> -->
 
     <view class="photo">
         <view style="display: block; margin-bottom: 30rpx;">
