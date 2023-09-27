@@ -1,6 +1,6 @@
 // 格式化虫子信息
 const formatInformation=(passdata)=>{
-    return passdata.insert+" "+passdata.size+" "+passdata.num+"只";
+    return passdata.insert+" / "+passdata.num+"只";
 }
 
 //函数防抖
