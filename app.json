@@ -5,8 +5,8 @@
     "pages/my/my",
     "pages/publish-order/publish-order",
     "pages/receive-order/receive-order",
-    "pages/maptest/maptest",
-    "pages/cameratest/cameratest"
+    "pages/ceshi/ceshi"
+  
   ],
   "window":{
     "backgroundTextStyle":"light",
