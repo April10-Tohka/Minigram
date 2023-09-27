@@ -1,5 +1,6 @@
 import {formatInformation,VerifyPhone} from "../../utils/util"
 import {options} from "./addressOptions"
+import {sendServer} from "../../apis/publish-order"
 Page({
     data: {
        AgreeClause:true,//是否点击我已阅读
@@ -17,20 +18,29 @@ Page({
        warntipTxt:"",//警告提示内容
        warntip:false,//是否显示警告
        price:18,//费用
-       canOrder:false,//是否可以点击下单按钮
-
        fieldValue: '',//地址
        options:options,//地址配置
        cascaderValue: '',//宿舍号码
-       
     },
     
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
-        
+        console.log("onload options:",options);
+        //进入到页面，异步查看本地缓存是否有用户地址信息
+        new Promise(resolve=>{
+            wx.getStorage({
+                key:'PersonDetail',
+                success:(res)=>{
+                    resolve(res.data);
+                }
+            })
+        })
+        .then((data)=>{
+            //有缓存结果就渲染到页面
+            this.setData({fieldValue:data.address,phonenumber:data.phonenumber});
+        })
     },
 
     /**
@@ -142,6 +152,22 @@ Page({
             showdetail:formatInformation(passobj.detail),
             InsertInformationComplete:passobj.detail.insertInformationComplete
         })
+        //计算价格
+        new Promise(resolve=>{
+            let {insert,num}=passobj.detail;
+            let price;
+            console.log("insert:",insert,num);
+            if(insert==="蟑螂")
+            {
+                price=7+num*2;
+            }
+            resolve(price)
+        }).then(price=>{
+            this.setData({price:price});
+        })
+
+        
+        
     },
     //输入内容什么都不做
     iptnothing(event)
@@ -211,16 +237,36 @@ Page({
             })
             return;
         }
-
-        //1.发送给服务器的数据
-        //2.动态计算价格
+        // 本地缓存用户个人信息(异步操作)
+        new Promise(resolve=>{
+            wx.setStorage({
+                key:"PersonDetail",
+                data:{
+                    address:this.data.fieldValue,
+                    phonenumber:this.data.phonenumber
+                },
+                success:(res)=>{
+                    console.log("本地缓存成功后调用！",res);
+                },
+            })
+        })
 
         console.log("所有资料填写完毕！之后会将信息发送到服务器");
-        
+        //1.发送给服务器的数据
+        //地址，电话，虫子信息，价格，
+        // 用户的id
+        const sendData={
+            address:this.data.fieldValue,
+            phone:this.data.phonenumber,
+            price:this.data.price,
+            insert:this.data.passdata.insert,
+            num:this.data.passdata.num,
+            pictures:this.data.passdata.fileList
+        }
+        sendServer(sendData).then((data)=>{
+            console.log("查看返回的数据",data);
+        });
     },
-
-    
-    
 })
 
 

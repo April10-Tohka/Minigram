@@ -14,8 +14,7 @@
                     <input type="text" placeholder="请输入灭虫地点!" 
                     value="{{fieldValue}}"  disabled="true"/>
                 </view>
-                <!-- 不需要箭头就删除了 -->
-                <text class="arrowdown"></text>
+                
             </view>
             <view class="phone">
                 <view class="icon">
@@ -63,7 +62,7 @@
             </view>
             <view class="order">
                 <button form-type="submit" class="submit" type="primary" 
-                disabled="{{canOrder}}" size="default" bindtap="submitbutton">
+                size="default" bindtap="submitbutton" >
                     立即下单
                 </button>
             </view>
@@ -97,6 +96,7 @@
     </van-popup>
     
 </form>
+
 
     
     
